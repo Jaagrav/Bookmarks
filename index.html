@@ -312,7 +312,7 @@
         function refresh() {
             document.querySelector(".bookmarkList").innerHTML = "";
             for (var i = 0; i < bookmarks.length; i++) {
-                document.querySelector(".bookmarkList").innerHTML += '<div class="li"><img src="http://' + bookmarks[i].url + '/favicon.ico" class="favicon"><a target="_blank" href=' + bookmarks[i].url + '><div class="bm">' + bookmarks[i].name + '</div></a><div class="link">www.' + bookmarks[i].url + '</div><img src="https://image.flaticon.com/icons/svg/60/60761.svg" class="del" onclick="del(' + i + ')"></div>';
+                document.querySelector(".bookmarkList").innerHTML += '<div class="li"><img src="http://' + bookmarks[i].url + '/favicon.ico" class="favicon"><a target="_blank" href=http://' + bookmarks[i].url + '><div class="bm">' + bookmarks[i].name + '</div></a><div class="link">www.' + bookmarks[i].url + '</div><img src="https://image.flaticon.com/icons/svg/60/60761.svg" class="del" onclick="del(' + i + ')"></div>';
             }
         }
         function del(index) {
