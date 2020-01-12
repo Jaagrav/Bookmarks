@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bookmarks Application</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Quicksand|Righteous&display=swap');
+
+        .container {
+            height: 60%;
+            width: 80%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 15px;
+            background: rgba(128, 128, 128, 0.521);
+        }
+
+        .BG {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .title {
+            position: fixed;
+            width: 250px;
+            margin: auto;
+            right: 0;
+            bottom: 80%;
+            left: 0;
+            top: 0;
+        }
+
+        .abbtn {
+            position: fixed;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            color: black;
+            outline: none;
+            border: 0;
+            background: rgb(253, 255, 123);
+            box-shadow: 0 0 20px black;
+            margin: auto;
+            right: 0;
+            left: 0;
+            bottom: 8%;
+        }
+
+        .bookmarkList {
+            position: absolute;
+            height: 100%;
+            width: 90%;
+            margin: auto;
+            right: 0;
+            left: 0;
+            overflow: scroll;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .li {
+            position: relative;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            width: 95%;
+            border-radius: 10px;
+            background: white;
+            padding: 2.5%;
+        }
+
+        .bm {
+            position: relative;
+            font-size: 25px;
+            float: left;
+        }
+
+        .favicon {
+            position: relative;
+            height: 18px;
+            width: 18px;
+            margin: 8px;
+        }
+
+        .link {
+            position: relative;
+            margin-left: 3px;
+        }
+
+        .del {
+            position: absolute;
+            height: 20px;
+            margin: auto;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .formBG {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(17, 17, 17, 0.781);
+            transition: 1s;
+        }
+
+        .form {
+            position: absolute;
+            height: 50%;
+            width: 90%;
+            background: #111;
+            margin: auto;
+            right: 0;
+            border-radius: 20px;
+            left: 0;
+            font-family: 'Quicksand', sans-serif;
+            bottom: 10%;
+            transition: 1s;
+        }
+
+        .webName {
+            position: absolute;
+            margin: auto;
+            right: 0;
+            left: 0;
+            top: 30%;
+            height: 25px;
+            width: 80%;
+            border-radius: 50px;
+            outline: none;
+            font-family: 'Quicksand', sans-serif;
+            border: 0;
+            padding: 5px;
+        }
+
+        .webSite {
+            position: absolute;
+            font-family: 'Quicksand', sans-serif;
+            margin: auto;
+            right: 0;
+            left: 0;
+            bottom: 40%;
+            height: 25px;
+            width: 80%;
+            border-radius: 50px;
+            outline: none;
+            border: 0;
+            padding: 5px;
+        }
+
+        .submitBtn {
+            position: absolute;
+            font-family: 'Quicksand', sans-serif;
+            height: 40px;
+            width: 120px;
+            border-radius: 50px;
+            outline: none;
+            border: 0;
+            right: 0;
+            background: rgb(0, 255, 115);
+            left: 0;
+            bottom: 20%;
+            margin: auto;
+            transition: .2s;
+        }
+
+        .submitBtn:active,
+        .exitBtn:active {
+            background: rgb(0, 180, 81);
+        }
+
+        .exitBtn {
+            position: absolute;
+            margin: auto;
+            right: 0;
+            left: 0;
+            font-family: 'Quicksand', sans-serif;
+            border-radius: 50%;
+            outline: none;
+            border: 0;
+            height: 30px;
+            width: 30px;
+            transition: .1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 15%;
+            background-color: rgb(0, 255, 115);
+        }
+
+        .preloader {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(rgb(241, 41, 68), rgb(255, 0, 106), pink);
+            margin: auto;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 1s ease;
+        }
+
+        /*Preload GIF*/
+
+        .logo {
+            position: absolute;
+            height: 140px;
+        }
+
+        /*Logo displayed on the preloading page*/
+
+        .loader {
+            position: absolute;
+            height: 140px;
+            bottom: 20%;
+            filter: hue-rotate(120deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://source.unsplash.com/900x1500/?mountains,night" class="BG">
+    <img src="https://txt-dynamic.static.1001fonts.net/txt/dHRmLjYwLmZjZTM2ZS5RbTl2YTAxaGNtdHouMAAA/she-rocks-personal-use.regular.png"
+        class="title">
+    <div class="container">
+        <div class="bookmarkList"></div>
+    </div>
+    <button onclick="addBookmark()" class="abbtn">+</button>
+    <div class="formBG">
+        <div class="form">
+            <button class="exitBtn" onclick="exit()">X</button>
+            <input type="text" class="webName" placeholder="Website Name">
+            <input type="text" class="webSite" placeholder="Web URL">
+            <button class="submitBtn">SUBMIT</button>
+        </div>
+    </div>
+    <div class="preloader">
+        <img src="http://files.softicons.com/download/application-icons/circle-icons-add-on-1-by-martz90/png/512x512/bookmarks.png"
+            class="logo">
+        <img src="https://flevix.com/wp-content/uploads/2019/07/Line-Preloader.gif" class="loader">
+    </div>
+    <script>
+        var bookmarks = [{
+            name: "GitHub",
+            url: "github.com"
+        }];
+        window.onload = function () {
+            setTimeout(() => {
+                document.querySelector(".preloader").style.transform = 'translateY(-100%)';
+            }, 1000);
+            exit();
+            bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+            setTimeout(1, add);
+            refresh();
+            document.querySelector(".submitBtn").addEventListener("click", add);
+        }
+        function exit() {
+            document.querySelector(".formBG").style.filter = "opacity(0)";
+            document.querySelector(".form").style.transform = "translateY(50%)";
+            setTimeout(() => { document.querySelector(".formBG").style.zIndex = "-2"; }, 1000);
+        }
+        function addBookmark() {
+            document.querySelector(".formBG").style.zIndex = "2";
+            document.querySelector(".formBG").style.filter = "opacity(1)";
+            document.querySelector(".form").style.transform = "translateY(0)";
+            setTimeout(1, add);
+        }
+        var webName;
+        function add(e) {
+            if (document.querySelector(".webSite").value.trim() != '') {
+                webName = document.querySelector(".webSite").value.replace("www.", "");
+                webName = webName.replace("http://", "");
+                webName = webName.replace("https://", "");
+                var bookmark = {
+                    name: document.querySelector(".webName").value,
+                    url: webName
+                }
+                console.log(localStorage.getItem('bookmarks'));
+                bookmarks.push(bookmark);
+                if (localStorage.getItem('bookmarks') == null) {
+                    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                }
+                else {
+                    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                }
+                e.preventDefault();
+                refresh();
+                exit();
+            }
+        }
+        function refresh() {
+            document.querySelector(".bookmarkList").innerHTML = "";
+            for (var i = 0; i < bookmarks.length; i++) {
+                document.querySelector(".bookmarkList").innerHTML += '<div class="li"><img src="http://' + bookmarks[i].url + '/favicon.ico" class="favicon"><div class="bm">' + bookmarks[i].name + '</div><div class="link">' + bookmarks[i].url + '</div><img src="https://image.flaticon.com/icons/svg/60/60761.svg" class="del" onclick="del(' + i + ')"></div>';
+            }
+        }
+        function del(index) {
+            bookmarks.splice(index, 1);
+            if (localStorage.getItem('bookmarks') == null) {
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            }
+            else {
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            }
+            refresh();
+        }
+        function refreshBookmarksLS(e) {
+            console.log(e);
+            if (localStorage.getItem('bookmarks') == null) {
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            }
+            else {
+                var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+                bookmarks.push(bookmark);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            }
+            e.preventDefault();
+        }
+    </script>
+</body>
+
+</html>
