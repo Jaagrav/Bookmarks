@@ -270,7 +270,13 @@
                 document.querySelector(".preloader").style.transform = 'translateY(-100%)';
             }, 1000);
             exit();
-            bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+            if (localStorage.getItem('bookmarks') != null)
+                bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+            else
+                bookmarks = [{
+                    name: "GitHub",
+                    url: "github.com"
+                }]
             setTimeout(1, add);
             refresh();
             document.querySelector(".submitBtn").addEventListener("click", add);
