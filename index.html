@@ -276,7 +276,8 @@
                 bookmarks = [{
                     name: "GitHub",
                     url: "github.com"
-                }]
+                }];
+            console.log(localStorage.getItem('bookmarks'));
             setTimeout(1, add);
             refresh();
             document.querySelector(".submitBtn").addEventListener("click", add);
