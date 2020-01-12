@@ -268,7 +268,10 @@
             exit();
             if (localStorage.getItem('bookmarks') == null)
                 alert("Add new bookmarks by pressing the Add Button down below.");
-            bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+            if (JSON.parse(localStorage.getItem('bookmarks')) != null)
+                bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+            else
+                bookmarks = [];
             setTimeout(1, add);
             refresh();
             document.querySelector(".submitBtn").addEventListener("click", add);
