@@ -203,6 +203,11 @@
             background-color: rgb(0, 255, 115);
         }
 
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
         .preloader {
             position: absolute;
             height: 100%;
@@ -220,14 +225,10 @@
             transition: 1s ease;
         }
 
-        /*Preload GIF*/
-
         .logo {
             position: absolute;
             height: 140px;
         }
-
-        /*Logo displayed on the preloading page*/
 
         .loader {
             position: absolute;
@@ -311,7 +312,7 @@
         function refresh() {
             document.querySelector(".bookmarkList").innerHTML = "";
             for (var i = 0; i < bookmarks.length; i++) {
-                document.querySelector(".bookmarkList").innerHTML += '<div class="li"><img src="http://' + bookmarks[i].url + '/favicon.ico" class="favicon"><div class="bm">' + bookmarks[i].name + '</div><div class="link">' + bookmarks[i].url + '</div><img src="https://image.flaticon.com/icons/svg/60/60761.svg" class="del" onclick="del(' + i + ')"></div>';
+                document.querySelector(".bookmarkList").innerHTML += '<a href="www.' + bookmarks[i].url + '"><div class="li"><img src="http://' + bookmarks[i].url + '/favicon.ico" class="favicon"><div class="bm">' + bookmarks[i].name + '</div><div class="link">' + bookmarks[i].url + '</div><img src="https://image.flaticon.com/icons/svg/60/60761.svg" class="del" onclick="del(' + i + ')"></div></a>';
             }
         }
         function del(index) {
@@ -323,18 +324,6 @@
                 localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
             }
             refresh();
-        }
-        function refreshBookmarksLS(e) {
-            console.log(e);
-            if (localStorage.getItem('bookmarks') == null) {
-                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-            }
-            else {
-                var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
-                bookmarks.push(bookmark);
-                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-            }
-            e.preventDefault();
         }
     </script>
 </body>
