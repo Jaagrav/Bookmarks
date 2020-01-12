@@ -256,28 +256,19 @@
         </div>
     </div>
     <div class="preloader">
-        <img src="http://files.softicons.com/download/application-icons/circle-icons-add-on-1-by-martz90/png/512x512/bookmarks.png"
-            class="logo">
+        <img src="http://www.pngmart.com/files/8/Bookmark-PNG-File.png" class="logo">
         <img src="https://flevix.com/wp-content/uploads/2019/07/Line-Preloader.gif" class="loader">
     </div>
     <script>
-        var bookmarks = [{
-            name: "GitHub",
-            url: "github.com"
-        }];
+        var bookmarks = [];
         window.onload = function () {
             setTimeout(() => {
                 document.querySelector(".preloader").style.transform = 'translateY(-100%)';
             }, 1000);
             exit();
-            if (localStorage.getItem('bookmarks') != null)
-                bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
-            else
-                bookmarks = [{
-                    name: "GitHub",
-                    url: "github.com"
-                }];
-            console.log(localStorage.getItem('bookmarks'));
+            if (localStorage.getItem('bookmarks') == null)
+                alert("Add new bookmarks by pressing the Add Button down below.");
+            bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
             setTimeout(1, add);
             refresh();
             document.querySelector(".submitBtn").addEventListener("click", add);
@@ -303,7 +294,6 @@
                     name: document.querySelector(".webName").value,
                     url: webName
                 }
-                console.log(localStorage.getItem('bookmarks'));
                 bookmarks.push(bookmark);
                 if (localStorage.getItem('bookmarks') == null) {
                     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
@@ -319,7 +309,7 @@
         function refresh() {
             document.querySelector(".bookmarkList").innerHTML = "";
             for (var i = 0; i < bookmarks.length; i++) {
-                document.querySelector(".bookmarkList").innerHTML += '<a href="www.' + bookmarks[i].url + '"><div class="li"><img src="http://' + bookmarks[i].url + '/favicon.ico" class="favicon"><div class="bm">' + bookmarks[i].name + '</div><div class="link">' + bookmarks[i].url + '</div><img src="https://image.flaticon.com/icons/svg/60/60761.svg" class="del" onclick="del(' + i + ')"></div></a>';
+                document.querySelector(".bookmarkList").innerHTML += '<div class="li"><img src="http://' + bookmarks[i].url + '/favicon.ico" class="favicon"><a href="www.' + bookmarks[i].url + ' target="_blank""><div class="bm">' + bookmarks[i].name + '</div></a><div class="link">www.' + bookmarks[i].url + '</div><img src="https://image.flaticon.com/icons/svg/60/60761.svg" class="del" onclick="del(' + i + ')"></div>';
             }
         }
         function del(index) {
