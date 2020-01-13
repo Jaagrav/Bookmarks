@@ -248,12 +248,12 @@
     </div>
     <button onclick="addBookmark()" class="abbtn">+</button>
     <div class="formBG">
-        <div class="form">
+        <form class="form">
             <button class="exitBtn" onclick="exit()">X</button>
             <input type="text" class="webName" placeholder="Website Name">
-            <input type="text" class="webSite" placeholder="Web URL" pattern="https?://.+" >
-            <button class="submitBtn">SUBMIT</button>
-        </div>
+            <input type="url" class="webSite" placeholder="Web URL" pattern="https?://.+" >
+            <input type="submit" class="submitBtn" value="SUBMIT">
+        </form>
     </div>
     <div class="preloader">
         <img src="http://www.pngmart.com/files/8/Bookmark-PNG-File.png" class="logo">
