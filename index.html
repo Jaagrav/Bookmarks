@@ -247,8 +247,8 @@
         <div class="bookmarkList"></div>
     </div>
     <button onclick="addBookmark()" class="abbtn">+</button>
-    <div class="formBG">
-        <form class="form">
+    <div class="formBG" action="">
+        <form class="form" onsubmit="setTimeout(1, add);">
             <button class="exitBtn" onclick="exit()">X</button>
             <input type="text" class="webName" placeholder="Website Name" required>
             <input type="url" class="webSite" placeholder="Web URL" required pattern="https?://.+" />
