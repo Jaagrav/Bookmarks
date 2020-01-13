@@ -248,7 +248,7 @@
     </div>
     <button onclick="addBookmark()" class="abbtn">+</button>
     <div class="formBG" action="">
-        <form class="form" onsubmit="setTimeout(1, add);return false">
+        <form class="form">
             <button class="exitBtn" onclick="exit()">X</button>
             <input type="text" class="webName" placeholder="Website Name" required>
             <input type="url" class="webSite" placeholder="Web URL" required pattern="https?://.+" />
@@ -274,6 +274,7 @@
                 bookmarks = [];
             setTimeout(1, add);
             refresh();
+            document.querySelector(".form").addEventListener('submit', add);
         }
         function exit() {
             document.querySelector(".formBG").style.filter = "opacity(0)";
